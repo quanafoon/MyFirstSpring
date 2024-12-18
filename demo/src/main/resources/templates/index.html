@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Spring</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <link rel="stylesheet" type="text/css" href="/styles.css">
+    </head>
+
+    <meta charset="UTF-8">
+    <body class="bg"> 
+            <div>
+                <p th:text="'Hey there, ' + ${user.firstname}"></p>
+            </div>
+    </body>
+</html>
