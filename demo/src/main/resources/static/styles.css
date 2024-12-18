@@ -1,9 +1,48 @@
-.bg{
+.section1{
     height:100vh; 
     padding:0; 
     margin:0; 
     overflow-x: hidden; 
     background-image: url(images/poui.jpg); 
     background-size: cover;
-    background-attachment: fixed;
+    background-attachment:fixed;
+}
+
+.homeText{
+    align-items: center;
+    color: white;
+    font-size: 20vh;
+    justify-items: center;
+}
+
+.credit{
+    font-size:10vh;
+}
+
+.section2{
+    height: 100vh;
+    font-size: 30vh;
+    align-items: center;
+    justify-items: center;
+    padding:0;
+    margin:0;
+}
+
+.loginForm{
+    margin-top: 10vh;
+    font-size: 5vh;
+}
+
+.formField{
+    text-align: center;
+}
+
+#loginBtn{
+    margin-top: 3vh;
+    position:relative;
+    left:30%;
+}
+
+.simpleText{
+    font-size: 2vh;
 }
