@@ -17,19 +17,30 @@
         </div>
         <div class="section2">
             <h1> Login </h1>
-            <form action="/login" method="GET" class= "loginForm">
+            <form th:action="@{/login}" th:object="${user}" method="post" class= "loginForm" >
                 <div class="input-field">
-                    <input class="formField" style="text-align:center" type="text" id="firstname" placeholder="firstname" required>
+                    <input class="formField" style="text-align:center" type="text" id="firstname" th:field="*{firstname}" placeholder="firstname" required>
                 </div>
                 <div class="input-field">
-                    <input class="formField" type="text" id="lastname" placeholder="lastname" required>
+                    <input class="formField" type="text" id="lastname" th:field="*{lastname}" placeholder="lastname" required>
                 </div>
                 <button type="submit" style="background-color: #38da84" class="btn" id="loginBtn">Login</button>
             </form>
-            <div style="display: flex; margin-top:5vh">
+            <div style="display: flex; margin-top:10vh">
                 <p class="simpleText"> Don't have an account? </p>
                 <button style="margin-left: 1vw; background-color: #38da84;" class="btn-small"> Sign up </button>
             </div>
         </div>
+        
+        <div id="flash-message" th:text="${message}" style="display:none;"> </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <script>
+            M.AutoInit();
+            var message = document.getElementById("flash-message").textContent;
+            if(message){
+                M.toast({html:message})
+            }
+        </script>
     </body>
 </html>
