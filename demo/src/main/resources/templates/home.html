@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>MyFirstSpring</title>
+</head>
+
+<body>
+    <style>
+
+        .card{
+            width:20vw; 
+        }
+        #card-header{
+            margin-top:0;
+            text-align:center;
+            color:white;
+        }
+        .row{
+            display:flex; 
+            justify-content:center; 
+            gap:5vw; 
+        }
+        #card-footer{
+            text-align:center;
+            margin-top:50%;
+            background-color:#63b288;
+            margin-bottom:0;
+            color:white;
+        }
+        .subtitle{
+            font-size:5vh;
+            margin-left: 5%;
+            margin-top:15%;
+        }
+        #calculated{
+            padding:1%; 
+            font-size:30px;
+        }
+    </style>
+
+    <nav>
+        <div class="nav-wrapper green darken-1">
+            <ul id="nav-mobile" class="brand-logo center">
+                <li>My First Spring</li>
+            </ul>
+            <ul id="nav-mobile" class="right">
+                <li><a href="/">Log out</a><li>
+            </ul>
+        </div>
+    </nav>
+
+    <h1 style="text-align:center;">Some Template Designs</h1>
+
+    <p class="subtitle">Cards with interactive reveals</h2>
+    <div class="row">
+        <div class="card">
+            <div class="card-panel green accent-3" id="card-header">
+                <span class="card-title">Card 1</span>
+            </div>
+            <div class="card-content"> 
+                <p>this is the first card</p>
+            </div>
+            <p id="card-footer" class="activator"> read more </p>
+            <div class="card-reveal">
+                <span class="card-title">Card 1<i class="material-icons right">close</i></span>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-panel green accent-3" id="card-header">
+                <span class="card-title">Card 2</span>
+            </div>
+            <div class="card-content"> 
+                <p>this is the second card</p>
+            </div>
+            <p id="card-footer" class="activator"> read more</p>
+            <div class="card-reveal">
+                <span class="card-title">Card 2<i class="material-icons right">close</i></span>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-panel green accent-3" id="card-header">
+                <span class="card-title">Card 3</span>
+            </div>
+            <div class="card-content"> 
+                <p>this is the third card</p>
+            </div>
+            <p id="card-footer" class="activator">read more</p>
+
+            <div class="card-reveal">
+                <span class="card-title">Class 3<i class="material-icons right">close</i></span>
+            </div>
+        </div>
+    </div>
+    
+    <h2 class="subtitle">Simple Vue Functions</h2>
+    <div class="card" style="width:100%; height:80vh">
+        <div id="calculated">
+            <p style="text-align:center; color: #1a0097">{{ num }}</p>
+            <div class="row">
+                <button class="btn" @click="incrementBy1">Increment by 1</button>
+                <button class="btn" @click="divideBy2">Divide by 2</button>
+                <button class="btn" @click="multiplyBy2">Multiply by 2</button>
+            </div>
+            <div style="display:flex; width:100%; overflow-x:hidden; font-size:5vh; gap:4vh">
+                <p>history:</p>
+                <p >{{history.join(", ")}}</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="flashed-message" th:text="${message}" style="display:none"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    
+    <script>
+        M.AutoInit();
+        var message = document.getElementById("flashed-message").textContent
+        if(message){
+            M.toast({html:message});
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script>
+        new Vue({
+            el: '#calculated',
+
+            data: {
+                num:0.0,
+                history:[],
+            },
+            methods: {
+                incrementBy1(){
+                    this.history.push(this.num);
+                    this.num++;
+                },
+                divideBy2(){
+                    this.history.push(this.num);
+                    this.num = this.num/2;
+                },
+                multiplyBy2(){
+                    this.history.push(this.num);
+                    this.num *=2;
+                },
+                
+            }
+            
+        });
+        
+    </script>
+</body>
+
+<script>
+    
+</script>
+</html>
