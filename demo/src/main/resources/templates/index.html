@@ -8,14 +8,19 @@
 
     <meta charset="UTF-8">
     <body style="display: grid"> 
+        <style>
+            .hidden{
+                display:none;
+            }
+        </style>
+
         <div class="section1">
             <div class="homeText">
-                <!--<p th:text="'Hey there, ' + ${user.firstname}"></p>-->
                 <p>My First Spring !</p>
                 <p class="credit">By quan afoon</p>
             </div>
         </div>
-        <div class="section2">
+        <div id="loginSection" class="section2">
             <h1> Login </h1>
             <form th:action="@{/login}" th:object="${user}" method="post" class= "loginForm" >
                 <div class="input-field">
@@ -28,10 +33,27 @@
             </form>
             <div style="display: flex; margin-top:10vh">
                 <p class="simpleText"> Don't have an account? </p>
-                <button style="margin-left: 1vw; background-color: #38da84;" class="btn-small"> Sign up </button>
+                <button style="margin-left: 1vw; background-color: #38da84;" class="btn-small" id="btn-s"> Sign up </button>
             </div>
         </div>
         
+        <div id="signUpSection" class="hidden">
+            <h1> Sign Up </h1>
+            <form th:action="@{/signup}" th:object="${user}" method="post" class= "loginForm" >
+                <div class="input-field">
+                    <input class="formField" style="text-align:center" type="text" id="signup-firstname" th:field="*{firstname}" placeholder="firstname" required>
+                </div>
+                <div class="input-field">
+                    <input class="formField" type="text" id="signup-lastname" th:field="*{lastname}" placeholder="lastname" required>
+                </div>
+                <button type="submit" style="background-color: #38da84" class="btn" id="loginBtn">Sign Up</button>
+            </form>
+            <div style="display: flex; margin-top:10vh">
+                <p class="simpleText">Already have an account? </p>
+                <button style="margin-left: 1vw; background-color: #38da84;" class="btn-small" id="btn-l"> Login </button>
+            </div>
+        </div>
+
         <div id="flash-message" th:text="${message}" style="display:none;"> </div>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
@@ -40,6 +62,25 @@
             var message = document.getElementById("flash-message").textContent;
             if(message){
                 M.toast({html:message})
+            }
+        </script>
+        <script>
+            const login = document.getElementById("loginSection")
+            const signUp = document.getElementById("signUpSection")
+            document.getElementById('btn-s').addEventListener("click", showSignUp)
+            document.getElementById('btn-l').addEventListener("click", showLogin)
+            
+            function showSignUp(){
+                login.classList.remove("section2")
+                login.classList.add("hidden")
+                signUp.classList.remove("hidden")
+                signUp.classList.add("section2")
+            }
+            function showLogin(){
+                signUp.classList.remove("section2")
+                signUp.classList.add("hidden")
+                login.classList.remove("hidden")
+                login.classList.add("section2")
             }
         </script>
     </body>
