@@ -70,4 +70,15 @@ public class Index {
         return "redirect:/";
     }
     
+    @PostMapping("/signup")
+    public String signup(@ModelAttribute User user, RedirectAttributes redirectAttributes){
+        if(userRepository.findByFirstname(user.getFirstname()) != null){
+            redirectAttributes.addFlashAttribute("message", "user already exists");
+        }
+        else{
+            userRepository.save(user);
+            redirectAttributes.addFlashAttribute("message", "user created");
+        }
+        return "redirect:/";
+    }
 }
