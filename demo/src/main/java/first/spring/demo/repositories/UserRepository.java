@@ -6,5 +6,5 @@ import first.spring.demo.models.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User,Long>{
-    User findByFirstname(String firstname);
+    User findByUsername(String username);
 }
