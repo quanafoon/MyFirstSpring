@@ -24,10 +24,10 @@
             <h1> Login </h1>
             <form th:action="@{/login}" th:object="${user}" method="post" class= "loginForm" >
                 <div class="input-field">
-                    <input class="formField" style="text-align:center" type="text" id="firstname" th:field="*{firstname}" placeholder="firstname" required>
+                    <input class="formField" style="text-align:center" type="text" id="username" th:field="*{username}" placeholder="username" required>
                 </div>
                 <div class="input-field">
-                    <input class="formField" type="text" id="lastname" th:field="*{lastname}" placeholder="lastname" required>
+                    <input class="formField" type="password" id="password" th:field="*{password}" placeholder="password" required>
                 </div>
                 <button type="submit" style="background-color: #38da84" class="btn" id="loginBtn">Login</button>
             </form>
@@ -41,10 +41,10 @@
             <h1> Sign Up </h1>
             <form th:action="@{/signup}" th:object="${user}" method="post" class= "loginForm" >
                 <div class="input-field">
-                    <input class="formField" style="text-align:center" type="text" id="signup-firstname" th:field="*{firstname}" placeholder="firstname" required>
+                    <input class="formField" style="text-align:center" type="text" id="signup-username" th:field="*{username}" placeholder="username" required>
                 </div>
                 <div class="input-field">
-                    <input class="formField" type="text" id="signup-lastname" th:field="*{lastname}" placeholder="lastname" required>
+                    <input class="formField" type="password" id="signup-password" th:field="*{password}" placeholder="password" required>
                 </div>
                 <button type="submit" style="background-color: #38da84" class="btn" id="loginBtn">Sign Up</button>
             </form>

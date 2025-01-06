@@ -2,12 +2,40 @@
 <head>
     <meta charset="UTF-8">
     <title>Error</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 </head>
 
-<body>
-    <div style= "display: flex; margin-top: 20vh; height:50vh;  justify-content: center; background-color: #f03434; color: white;">
-        <p style="font-size: 50px; align-content: center;">There's been an error, check the terminal</p>
+<body style="margin-top: 10vh;">
+    <style>
+        .container{
+            display:flex;
+            height:30vh;
+            align-items:center;
+            justify-content:center;
+        }
+        .box{
+            font-size: 50px; 
+            width:50vw;
+            background-color:rgb(203, 64, 64);
+            color: white; 
+            text-align:center;
+        }
+        
+    </style>
+
+    <div class="container">
+        <div class="box">There's been an error</div>
     </div>
+
+    <div class="container">
+        <button id="home" class="btn-large"> Go Home </button>
+    </div>
+    <script>
+        document.getElementById("home").addEventListener("click", goHome)
+        function goHome(){
+            window.location.href = "/";
+        }
+    </script>
 </body>
 
 </html>

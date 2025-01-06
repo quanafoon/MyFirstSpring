@@ -34,19 +34,19 @@ public class Index {
 
     @PostMapping("/login")
     public String login(@ModelAttribute User user, RedirectAttributes redirectAttributes) {
-        User found = userRepository.findByFirstname(user.getFirstname());
+        User found = userRepository.findByUsername(user.getUsername());
         if(found != null){
             Long userId = found.getId();
             Long identifier = found.generateIdentifier();
             userRepository.save(found);
             try{
                 String encryptedIdentifier = Encryption.encrypt(Long.toString(identifier), "scolding");
-                redirectAttributes.addFlashAttribute("message", "Hey there, " + user.getFirstname());
+                redirectAttributes.addFlashAttribute("message", "Hey there, " + user.getUsername());
                 return "redirect:/home/" + userId + "/" + encryptedIdentifier ;
             } catch (Exception e) {e.printStackTrace();}
         }
         redirectAttributes.addFlashAttribute("message", "User does not exist");
-        System.out.println(user.getFirstname() + " was not found");
+        System.out.println(user.getUsername() + " was not found");
         return "redirect:/";
     }
     
@@ -72,7 +72,7 @@ public class Index {
     
     @PostMapping("/signup")
     public String signup(@ModelAttribute User user, RedirectAttributes redirectAttributes){
-        if(userRepository.findByFirstname(user.getFirstname()) != null){
+        if(userRepository.findByUsername(user.getUsername()) != null){
             redirectAttributes.addFlashAttribute("message", "user already exists");
         }
         else{
